@@ -7,7 +7,7 @@ package com.weather.demo.api.controller;
 
 import com.weather.demo.api.exception.BadRequestException;
 import com.weather.demo.api.exception.TooManyRequestException;
-import com.weather.demo.api.service.UsagePlanService;
+import com.weather.demo.api.throttler.UsagePlanService;
 import com.weather.demo.api.service.WeatherService;
 import com.weather.demo.util.Constants;
 import io.github.bucket4j.Bucket;
@@ -53,10 +53,8 @@ public class WeatherController {
 
         String extractedApiKey = null;
         if (apiKey.isPresent()) {
-            System.out.println("1. API Key: " + apiKey.get());
             extractedApiKey = apiKey.get();
         } else if (apiKeyQueryParam.isPresent()) {
-            System.out.println("2. API Key: " + apiKeyQueryParam.get());
             extractedApiKey = apiKeyQueryParam.get();
         }
         Bucket bucket = usagePlanService.resolveBucket(extractedApiKey);

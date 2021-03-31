@@ -1,6 +1,5 @@
-package com.weather.demo.api.service;
+package com.weather.demo.api.throttler;
 
-import com.weather.demo.api.throttler.UsagePlan;
 import io.github.bucket4j.Bucket;
 import io.github.bucket4j.Bucket4j;
 import org.slf4j.Logger;
